@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Okey Giriş Ekranı</title>
+  <style>
+    /* Stil kodların tamamen aynı şekilde kalabilir (kısaltılmadı) */
+    body {
+      background-color: #165c2e;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: auto;
+      background: #1b5e20;
+      padding: 25px 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #0005;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    select, input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .players {
+      margin-top: 10px;
+    }
+
+    .players label {
+      font-weight: normal;
+    }
+
+    .btn {
+      margin-top: 25px;
+      background-color: #f1c40f;
+      color: #000;
+      padding: 14px;
+      text-align: center;
+      border: none;
+      border-radius: 6px;
+      width: 100%;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background-color: #d4ac0d;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .kat-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .kat-input {
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 10px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .siyah { background-color: #000; }
+    .kirmizi { background-color: #c0392b; }
+    .mavi { background-color: #2980b9; }
+    .sari { background-color: #f1c40f; color: #000; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Okey Skor Girişi</h1>
+
+    <label for="oyunTipi">Oyun Tipi</label>
+    <select id="oyunTipi" onchange="guncelleOyuncular()">
+      <option value="">Lütfen Seçiniz</option>
+      <option value="esli">Eşli (2 Takım)</option>
+      <option value="tekli">Tekli (4 Oyuncu)</option>
+    </select>
+
+    <div class="players hidden" id="oyuncuIsimleri">
+      <div id="player1Row">
+        <label>Player 1:</label>
+        <input type="text" id="player1" value="Player 1">
+      </div>
+      <div id="player2Row">
+        <label>Player 2:</label>
+        <input type="text" id="player2" value="Player 2">
+      </div>
+      <div id="player3Row" class="hidden">
+        <label>Player 3:</label>
+        <input type="text" id="player3" value="Player 3">
+      </div>
+      <div id="player4Row" class="hidden">
+        <label>Player 4:</label>
+        <input type="text" id="player4" value="Player 4">
+      </div>
+    </div>
+
+    <div id="katlar" class="hidden">
+      <label>Kat Değerleri (Çarpan):</label>
+      <div class="kat-wrapper">
+        <input type="number" id="kat_siyah" class="kat-input siyah" value="10" placeholder="Siyah">
+        <input type="number" id="kat_kirmizi" class="kat-input kirmizi" value="10" placeholder="Kırmızı">
+        <input type="number" id="kat_mavi" class="kat-input mavi" value="20" placeholder="Mavi">
+        <input type="number" id="kat_sari" class="kat-input sari" value="20" placeholder="Sarı">
+      </div>
+    </div>
+
+    <button class="btn hidden" id="baslatBtn" onclick="baslat()">Oyunu Başlat</button>
+  </div>
+
+  <!-- Giriş ekranı JS modülü -->
+  <script src="js/girisEkrani.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      guncelleOyuncular();
+    });
+  </script>
+</body>
+</html>
